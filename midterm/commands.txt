@@ -1,0 +1,34 @@
+File system operations that I developed and tested: mkdir, write, read, list, dumpe2fs.
+
+File system commands that I tested:
+mkdir:
+./fileSystemOper fileSystem.data mkdir "/usr"
+./fileSystemOper fileSystem.data mkdir "/usr/ysa"
+./fileSystemOper fileSystem.data mkdir "/usr/ysa/cse"
+./fileSystemOper fileSystem.data mkdir "/usr/ysa/cse" -> Prints error message because there is same name directory that name is cse in directory named ysa.
+./fileSystemOper fileSystem.data mkdir "/bin/ysa" -> Prints error message because there is no directory named bin.
+./fileSystemOper fileSystem.data mkdir "/usr/nevra/cse" ->Prints error message because there is no directory named nevra in usr.
+
+write:
+./fileSystemOper fileSystem.data write "/usr/file1" input.txt
+./fileSystemOper fileSystem.data write "/usr/ysa/file2" input.txt
+./fileSystemOper fileSystem.data write "/file3" input.txt
+./fileSystemOper fileSystem.data write "/file3" input.txt ->Prints error message because there is same name file that name is file3 in root directory.
+./fileSystemOper fileSystem.data write "/usr" file.txt ->prints error message because there is no file named file.txt
+./fileSystemOper fileSystem.data write "/bin/file4" input2.txt ->prints error message because there is no directory named bin.
+
+read:
+./fileSystemOper fileSystem.data read "/usr/file1" out.txt
+./fileSystemOper fileSystem.data read "/usr/ysa/file2" out.txt 
+./fileSystemOper fileSystem.data read "/file3" out.txt
+./fileSystemOper fileSystem.data read "/bin/file4" out.txt  ->prints error message because there is no directory named bin.
+./fileSystemOper fileSystem.data read "/file5" out.txt ->prints error message because there is no file named file5 in root dir.
+
+list:
+./fileSystemOper fileSystem.data list "/"
+./fileSystemOper fileSystem.data list "/usr"
+./fileSystemOper fileSystem.data list "/usr/ysa"
+./fileSystemOper fileSystem.data list "/bin/ysa" ->prints error message because there is no directory named bin.
+
+dumpe2fs
+./fileSystemOper fileSystem.data dumpe2fs
